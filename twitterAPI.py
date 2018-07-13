@@ -1,12 +1,14 @@
 
 
 from TwitterAPI import TwitterAPI
+import config
 
-Consumer_Key =	'tRI9XJBCMFF9TbU0OzID3ORLo'
-Consumer_Secret =	'0jayfDWQQgV65MD5nfoSxBSjHV08OC5TDGvjWtEv8omfX0Zywp'
 
-Access_Token	='1017683083993071617-83VQvXS2KbKmI7ib93JnzqV3KyMFJD'
-Access_Secret ='ocqtdzOQJ5lsG6kFn4LphWwHxmiTpk06bl8Sz0PSY72C0'
+Consumer_Key =	config.config['Consumer_Key']
+Consumer_Secret =	config.config['Consumer_Secret']
+
+Access_Token	= config.config['Access_Token']
+Access_Secret = config.config['Access_Secret']
 
 
 api = TwitterAPI(Consumer_Key, Consumer_Secret, Access_Token, Access_Secret)
