@@ -4,11 +4,11 @@ from TwitterAPI import TwitterAPI
 import config
 
 
-Consumer_Key =	config.config['Consumer_Key']
-Consumer_Secret =	config.config['Consumer_Secret']
+Consumer_Key =	config.twitter_config['Consumer_Key']
+Consumer_Secret =	config.twitter_config['Consumer_Secret']
 
-Access_Token	= config.config['Access_Token']
-Access_Secret = config.config['Access_Secret']
+Access_Token	= config.twitter_config['Access_Token']
+Access_Secret = config.twitter_config['Access_Secret']
 
 
 api = TwitterAPI(Consumer_Key, Consumer_Secret, Access_Token, Access_Secret)
