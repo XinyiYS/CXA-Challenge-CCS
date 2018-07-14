@@ -42,9 +42,12 @@ apple = company.apple
 google = company.google
 facebook = company.facebook
 
-
-
-# stream(apple,100)
+if __name__ == '__main__':
+	for a in (amazon,apple,google,facebook,motorola):
+		with open('tweet_hist.txt','a') as w:
+			texts = stream(a,50)[0]
+			for text in texts:
+				w.write(text)
 
 
 

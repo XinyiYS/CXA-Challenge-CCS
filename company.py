@@ -17,7 +17,3 @@ facebook =  'facebook,instagram,facebook marketplace,facebook messenger,facebook
 			facebook watch,whatsapp,moments,internet.org,facebook business,facebook blueprint'
 
 apple = 'apple,steve jobs,iphone,iwatch,mac pro,imac,macbook,mac mini,ipod,ipad,itouch'
-
-
-
-
