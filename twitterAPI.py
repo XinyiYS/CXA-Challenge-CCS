@@ -1,34 +1,50 @@
-
-
 from TwitterAPI import TwitterAPI
 import config
-
+import preprocessor as p
 
 Consumer_Key =	config.twitter_config['Consumer_Key']
 Consumer_Secret =	config.twitter_config['Consumer_Secret']
-
 Access_Token	= config.twitter_config['Access_Token']
 Access_Secret = config.twitter_config['Access_Secret']
 
-
 api = TwitterAPI(Consumer_Key, Consumer_Secret, Access_Token, Access_Secret)
 
-# Tweet something:
-# r = api.request('statuses/update', {'status':'This is a tweet!'})
-# print(r.status_code)
-# Get tweet by its id:
+def stream(keyword,count=1000):
+	r = api.request('statuses/filter', {'track':keyword})
+	texts ,tweets = [],[]
+	for item in r.get_iterator():
+		if 'text' in item:
+			if 'lang' in item and item['lang'] == 'en':
+				texts.append(p.clean(item['text'])+"\n")
+				tweets.append(item)
+				count -= 1
+		if count ==0:
+			break
+	return texts,tweets
 
-r = api.request('statuses/show/:%d' % 210462857140252672)
-print(r.text)
+def get_influence(tweet):
+	influence = 1
+	if 'reply_count' in tweet:
+		influence += tweet['reply_count']
+	if 'retweet_count' in tweet:
+		influence += tweet['reply_count']
+	if 'favorite_count' in tweet:
+		influence += tweet['favorite_count']
+	if 'reply_count' in tweet:
+		influence += tweet['reply_count']
+	return influence
 
-# Get some tweets:
 
-r = api.request('search/tweets', {'q':'pizza'})
-for item in r:
-        print(item)
+import company
+motorola = company.motorola
+amazon = company.amazon
+apple = company.apple
+google = company.google
+facebook = company.facebook
 
-# Stream tweets from New York City:
 
-r = api.request('statuses/filter', {'locations':'-74,40,-73,41'})
-for item in r:
-        print(item)
+
+# stream(apple,100)
+
+
+
